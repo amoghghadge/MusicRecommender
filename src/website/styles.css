@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Open Sans", sans-serif;
+}
+
+.flexbox-container {
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /*border: 1px solid #0000FF;*/
+}
+
+.flexbox-item {
+    /*border: 1px solid #FF0000;*/
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 5vh;
+    font-size: 1.5vw;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+
+.number {
+    font-size: 1.2vw;
+    margin-bottom: 10vh;
+}
+
+.sumbit {}
+
+.results {
+    margin-top: 5vh
+}
+
+#logo {
+    width: 7vw;
+    height: 7vw;
+    padding-right: 30px;
+}
+
+#playlist {
+    background-color: #5B2C6F;
+    width: 40vw;
+    height: 3vw;
+    font-size: 1.2vw;
+    text-align: center;
+    border-width: 1px;
+    border-color: black;
+    color: #ffffff;
+}
+
+#numsongs {}
+
+#button {
+    width: 20vw;
+    height: 3vw;
+    font-size: 1.2vw;
+    background-color: #196F3D;
+    border-width: 1px;
+    border-color: black;
+    color: #ffffff;
+    border-radius: 15px;
+}
+
+::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommender</title>
+    <link rel="stylesheet" href="styles.css">
+    <script data-main="script.js" src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+    <script src="private.js"></script>
+
+</head>
+
+<body>
+
+    <div class="flexbox-container">
+
+        <div class="flexbox-item header">
+
+            <h1>Music Recommender</h1>
+
+        </div>
+
+        <form onsubmit="myFunction()" target="submit.html">
+
+            <div class="flexbox-item link">
+
+                <img id="logo" src="images/spotify.png">
+                <input type="text" id="playlist" name="playlist" placeholder="Link to Spotify Playlist">
+
+            </div>
+
+            <div class="flexbox-item number">
+
+                <label for="numsongs">Number of songs to recommend: </label>
+                <input type="number" id="numsongs" name="numsongs" min="1" max="100">
+
+            </div>
+
+            <div class="flexbox-item submit">
+
+                <input type="submit" id="button" value="Get recommendations">
+
+            </div>
+
+        </form>
+
+        <div class="flexbox-item results">
+
+            <p id="recommendations"></p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -5,7 +5,7 @@ model.joblib : Saves the locally trained model in the format that SageMaker is e
 
 inference.py : Helps SageMaker understand how input and output for the model will be configured<br>
 
-main.py : Script to deploy model onto SageMaker (IMPORTANT: DONT LEAK IAM ARN AND SPOTIFY ACCESS KEYS)<br>
+main.py : Script to deploy model onto SageMaker<br>
 invoke.py : Script that tests the endpoint by invoking it<br>
 
 ___________________________________________________________________________________________________

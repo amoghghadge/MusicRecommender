@@ -5,5 +5,3 @@ src/sagemaker/urllib3/
 src/sagemaker/.cache
 src/sagemaker/model.tar.gz
 src/website/private.js
-
-.gitignore

@@ -1,4 +1,4 @@
-Website available at: https://music.amoghghadge.com
+Web application available at: https://music.amoghghadge.com
 
 ### Sagemaker folder
 

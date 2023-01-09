@@ -29,12 +29,7 @@ number_cols = list(X.columns)
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=os.environ["SPOTIFY_CLIENT_ID"], client_secret=os.environ["SPOTIFY_CLIENT_SECRET"]))
 
 def find_song(name, year):
-  
-    """
-    This function returns a dataframe with data for a song given the name and release year.
-    The function uses Spotipy to fetch audio features and metadata for the specified song.
-    """
-    
+
     song_data = defaultdict()
     results = sp.search(q= 'track: {} year: {}'.format(name,year), limit=1)
     if results['tracks']['items'] == []:
@@ -56,15 +51,7 @@ def find_song(name, year):
     
     return pd.DataFrame(song_data)
 
-number_cols = ['valence', 'year', 'acousticness', 'danceability', 'duration_ms', 'energy', 'explicit',
-'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity', 'speechiness', 'tempo']
-
 def get_song_data(song, spotify_data):
-    
-    """
-    Gets the song data for a specific song. The song argument takes the form of a dictionary with 
-    key-value pairs for the name and release year of the song.
-    """
     
     try:
         song_data = spotify_data[(spotify_data['name'] == song['name']) & (spotify_data['year'] == int(song['year']))].iloc[0]
@@ -74,10 +61,6 @@ def get_song_data(song, spotify_data):
         return find_song(song['name'], song['year'])
 
 def get_mean_vector(song_list, spotify_data):
-  
-    """
-    Gets the mean vector for a list of songs.
-    """
     
     song_vectors = []
     
@@ -93,11 +76,7 @@ def get_mean_vector(song_list, spotify_data):
     return np.mean(song_matrix, axis=0)
 
 def flatten_dict_list(dict_list):
-   
-    """
-    Utility function for flattening a list of dictionaries.
-    """
-    
+
     flattened_dict = defaultdict()
     for key in dict_list[0].keys():
         flattened_dict[key] = []
@@ -109,10 +88,6 @@ def flatten_dict_list(dict_list):
     return flattened_dict
 
 def recommend_songs(song_list, spotify_data, cluster_pipeline, n_songs=10):
-  
-    """
-    Recommends songs based on a list of previous songs that a user has listened to.
-    """
     
     metadata_cols = ['name', 'year', 'artists']
     song_dict = flatten_dict_list(song_list)
@@ -130,10 +105,12 @@ def recommend_songs(song_list, spotify_data, cluster_pipeline, n_songs=10):
 
 # Methods for SageMaker
 def model_fn(model_dir):
+
     model = joblib.load(os.path.join(model_dir, "model.joblib"))
     return model
 
 def input_fn(request_body, request_body_content_type):
+
     if request_body_content_type == 'application/json':
         request_body=json.loads(request_body)
         inpVar = {'Songs': request_body['Songs'], 'Number': request_body['Number']}
@@ -142,6 +119,7 @@ def input_fn(request_body, request_body_content_type):
         raise ValueError("This model only supports application/json input")
 
 def predict_fn(input_data, model):
+
     song_list = input_data.get('Songs')
     n_songs = input_data.get('Number')
     cluster_labels = model.predict(X)
@@ -150,6 +128,7 @@ def predict_fn(input_data, model):
     return resp
 
 def output_fn(prediction, content_type):
+    
     respJSON = {'Songs': prediction}
     return respJSON
 

@@ -2,7 +2,7 @@ src/sagemaker/private.py
 src/sagemaker/requests/
 src/sagemaker/spotipy/
 src/sagemaker/urllib3/
+src/sagemaker/data/
 src/sagemaker/.cache
 src/sagemaker/model.tar.gz
 src/website/private.js
-src/sagemaker/data/

@@ -19,7 +19,7 @@ from collections import defaultdict
 from scipy.spatial.distance import cdist
 
 s3 = boto3.client('s3') 
-obj = s3.get_object(Bucket= "aghadge-song-data", Key= "data.csv") 
+obj = s3.get_object(Bucket= "aghadge-song-data", Key= "tracks_features.csv") 
 
 spotify_data = pd.read_csv(obj['Body'])
 X = spotify_data.select_dtypes(np.number)

@@ -5,3 +5,4 @@ src/sagemaker/urllib3/
 src/sagemaker/.cache
 src/sagemaker/model.tar.gz
 src/website/private.js
+src/sagemaker/data/tracks_features.csv

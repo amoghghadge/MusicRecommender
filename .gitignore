@@ -6,3 +6,4 @@ src/sagemaker/data/
 src/sagemaker/.cache
 src/sagemaker/model.tar.gz
 src/website/private.js
+.cache

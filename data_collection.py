@@ -19,14 +19,22 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=os.environ[
 df = pd.DataFrame(columns=['name', 'year', 'artists', 'track_uri', 'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 
                            'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature'])
 
+print("running on " + str(len(spotify_charts.index)) + " songs!")
+print("\ngood luck!\n")
+
 # find audio features for all songs on spotify charts
-for i in range(len(spotify_charts.index)):
+for i in range(50):
+    print(str(i) + " song\n")
     name = spotify_charts.iloc[i]['title']
     year = spotify_charts.iloc[i]['date'][:4]
     artists = spotify_charts.iloc[i]['artist']
 
     # returns dictionary, with many keys having other dictionaries as values
-    results = sp.search(q= 'track: {} artist: {}'.format(name, artists), limit=1)
+    try:
+        results = sp.search(q= 'track: {} artist: {}'.format(name, artists), limit=1)
+    except:
+        print("Song taken down\n")
+        continue
     uri = results['tracks']['items'][0]['uri']
 
     # returns list of dictionaries, get the first one

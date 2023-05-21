@@ -35,10 +35,13 @@ for i in range(0, len(spotify_charts.index), 100):
     audio_features = sp.audio_features(url)
 
     # make new row enteries for audio features of each song
-    for j in range(0, 100):
-        track_features = audio_features[j]
-        relevant_features = [track_features[col] for col in df.columns if col not in ['name', 'date', 'artists', 'url']]
-        row = [name[j], date[j], artists[j], url[j], *relevant_features]
-        df.loc[len(df.index)] = row
+    for j in range(i, min(i+100, len(spotify_charts.index) - 1)):
+        try:
+            track_features = audio_features[j-i]
+            relevant_features = [track_features[col] for col in df.columns if col not in ['name', 'date', 'artists', 'url']]
+            row = [name[j], date[j], artists[j], url[j], *relevant_features]
+            df.loc[len(df.index)] = row
+        except:
+            print("Error for song " + str(j) + ". Url: " + str(url[j]))
 
 df.to_csv("./src/sagemaker/data/charts_with_audio_features.csv", encoding='utf-8', index=False)

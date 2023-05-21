@@ -35,7 +35,7 @@ for i in range(0, len(spotify_charts.index), 100):
     audio_features = sp.audio_features(url)
 
     # make new row enteries for audio features of each song
-    for j in range(i, min(i+100, len(spotify_charts.index) - 1)):
+    for j in range(i, min(i+100, len(spotify_charts.index))):
         try:
             track_features = audio_features[j-i]
             relevant_features = [track_features[col] for col in df.columns if col not in ['name', 'date', 'artists', 'url']]

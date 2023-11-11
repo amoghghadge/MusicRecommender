@@ -71,14 +71,15 @@ async function myFunction() {
     const y = document.getElementById("playlist").value.indexOf("?");
 
     const token = await authorize();
-    const songs = await getPlaylistTracks(document.getElementById("playlist").value.substring(x + 9, y), token);
-    const num = document.getElementById("numsongs").value;
-    console.log("INPUTTING BODY:");
-    console.log(JSON.stringify({ "Songs": songs, "Number": num }));
+    console.log(token)
+    // const songs = await getPlaylistTracks(document.getElementById("playlist").value.substring(x + 9, y), token);
+    // const num = document.getElementById("numsongs").value;
+    // console.log("INPUTTING BODY:");
+    // console.log(JSON.stringify({ "Songs": songs, "Number": num }));
 
-    console.log("GETTING RECOMMENDATIONS:")
-    const recommendations = await getRecommendations(songs, num);
-    document.getElementById("recommendations").innerHTML = JSON.stringify(recommendations);
-    console.log(recommendations);
+    // console.log("GETTING RECOMMENDATIONS:")
+    // const recommendations = await getRecommendations(songs, num);
+    // document.getElementById("recommendations").innerHTML = JSON.stringify(recommendations);
+    // console.log(recommendations);
 
 }

@@ -1,0 +1,12 @@
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  width: 100%;
+  margin-top: 2vh;
+}
+
+.Spotify-logo {
+  height: 10vmin;
+}

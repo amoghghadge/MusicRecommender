@@ -48,12 +48,12 @@ export default function Home(props) {
     <div style={{ width: "75%" }}>
       {triedInputting === true && validLink === false &&
         <div>
-          <img src={warning} style={{ height: "40vh" }} alt="invalid"></img>
+          <img src={warning} style={{ height: "35vh" }} alt="invalid"></img>
           <p>Invalid link! Make sure the playlist is public!</p>
         </div>}
       {triedInputting === true && validLink === true &&
         <div>
-          <img src={playlistImage} style={{ height: "40vh" }} alt="playlist cover"></img>
+          <img src={playlistImage} style={{ height: "35vh" }} alt="playlist cover"></img>
           <p>Valid link!</p>
         </div>}
       <div style={{ marginTop: "5vh" }}>

@@ -2,9 +2,13 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Songs from "./components/Songs"
+import { AppStateContext } from "./helpers/Context";
 
 export default function App() {
   const [token, setToken] = React.useState("")
+  const [menuState, setMenuState] = React.useState("Home")
+  const [recommendedSongs, setRecommendedSongs] = React.useState([])
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -31,8 +35,18 @@ export default function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Home token={token} />
+      <AppStateContext.Provider
+        value={{
+          menuState,
+          setMenuState,
+          recommendedSongs,
+          setRecommendedSongs
+        }}
+      >
+        <Header />
+        {menuState === "Home" && <Home token={token} />}
+        {menuState === "Songs" && <Songs />}
+      </AppStateContext.Provider>
     </div>
   );
 }

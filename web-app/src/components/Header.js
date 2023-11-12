@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Box from "@mui/joy/Box";
 import IconButton from "@mui/joy/IconButton";
 import Menu from "@mui/icons-material/Menu";
@@ -8,8 +8,10 @@ import ListItemButton from "@mui/joy/ListItemButton";
 import spotify from "../resources/spotify.png";
 import Drawer from "@mui/joy/Drawer";
 import "./Header.css";
+import { AppStateContext } from "../helpers/Context";
 
 export default function Header() {
+  const { setMenuState } = useContext(AppStateContext);
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (inOpen) => (event) => {
@@ -21,6 +23,10 @@ export default function Header() {
     }
 
     setOpen(inOpen);
+  };
+
+  const changeMenuState = (text) => {
+    setMenuState(text);
   };
 
   return (
@@ -47,7 +53,7 @@ export default function Header() {
           <List>
             {["Home", "Songs", "About"].map((text) => (
               <ListItem key={text}>
-                <ListItemButton>{text}</ListItemButton>
+                <ListItemButton onClick={() => changeMenuState(text)}>{text}</ListItemButton>
               </ListItem>
             ))}
           </List>

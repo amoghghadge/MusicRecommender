@@ -6,12 +6,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 
 # Read in data
-spotify_data = pd.read_csv('./data/data.csv')
+spotify_data = pd.read_csv('./data/us_charts_with_audio_features.csv')
 
 # Cluster songs using K-Means
-cluster_pipeline = Pipeline([('scaler', StandardScaler()), ('kmeans', KMeans(n_clusters=20, verbose=2))],verbose=True)
-X = spotify_data.select_dtypes(np.number)
-number_cols = list(X.columns)
+spotify_data.dropna(inplace=True)
+cluster_pipeline = Pipeline([('scaler', StandardScaler()), 
+                             ('kmeans', KMeans(n_clusters=7, verbose=2, n_init=10))], verbose=True)
+columns_to_use = ['acousticness', 'danceability', 'energy', 'instrumentalness', 'liveness', 'loudness', 'speechiness', 'tempo', 'valence']
+X = spotify_data[columns_to_use]
 cluster_pipeline.fit(X)
 
 with open('model.joblib', 'wb') as f:

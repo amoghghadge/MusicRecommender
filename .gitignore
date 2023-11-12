@@ -5,6 +5,7 @@ sagemaker/urllib3/
 sagemaker/data/
 sagemaker/.cache
 sagemaker/model.tar.gz
+sagemaker/__pycache__
 website/private.js
 .cache
 .vscode/

@@ -102,7 +102,20 @@ def recommend_songs(song_list, spotify_data, cluster_pipeline, n_songs=10):
 
     # Format output
     metadata_cols = ['name', 'artists', 'url']
-    return rec_songs[metadata_cols].to_dict(orient='records')
+    result = rec_songs[metadata_cols].to_dict(orient='records')
+    urls = []
+    images = []
+    for song in result:
+        urls.append(song['url'])
+        
+    tracks = sp.tracks(urls)
+    
+    for t in tracks['tracks']:
+        images.append(t['album']['images'][0]['url'])
+        
+    for i, song in enumerate(result):
+        song['image_url'] = images[i]
+    return result
 
 # Methods for SageMaker
 def model_fn(model_dir):

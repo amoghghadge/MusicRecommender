@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Songs from "./components/Songs"
+import About from "./components/About"
 import { AppStateContext } from "./helpers/Context";
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
         <Header />
         {menuState === "Home" && <Home token={token} />}
         {menuState === "Songs" && <Songs />}
+        {menuState === "About" && <About />}
       </AppStateContext.Provider>
     </div>
   );

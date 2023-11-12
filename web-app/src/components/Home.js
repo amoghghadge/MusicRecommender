@@ -79,13 +79,14 @@ export default function Home(props) {
 
         var dict = {};
         dict["name"] = track.name;
-        dict["year"] = parseFloat(track.album.release_date.substring(0, 4));
+        dict["artist"] = track.artists[0].name;
 
         tracks.push(dict);
       } catch {
         continue;
       }
     }
+    console.log(tracks)
 
     const lambda = await fetch(`https://2uhqdfqcca.execute-api.us-east-1.amazonaws.com/prod/`, {
       method: 'POST',
@@ -100,9 +101,7 @@ export default function Home(props) {
     console.log(lamdbaResult)
 
     setLoading(false)
-    // TODO: update list of songs from lambdaResult
-    let songs = ["asdf", "haslkdf", "asldjfk"]
-    setRecommendedSongs(songs)
+    setRecommendedSongs(JSON.parse(lamdbaResult.body))
     setMenuState("Songs")
   }
 

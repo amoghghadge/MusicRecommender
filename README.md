@@ -10,16 +10,13 @@ inference.py : Helps SageMaker understand how input and output for the model wil
 main.py : Script to deploy model onto SageMaker<br>
 invoke.py : Script that tests the endpoint by invoking it<br>
 
-___________________________________________________________________________________________________
+---
 
-### Website folder
+### Web-app folder
 
-index.html : Homepage of music recommendation web app<br>
-styles.css : Styling for the index file<br>
+React code used for web-app
 
-script.js : Handles all logic of frontend (calling Spotify API and my API)<br>
-
-___________________________________________________________________________________________________
+---
 
 ### Lambda folder
 
